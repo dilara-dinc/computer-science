@@ -1,0 +1,58 @@
+import java.util.LinkedList;
+
+class Pair {
+    int key;
+    int value;
+
+    Pair(int k, int v) {
+        key = k;
+        value = v;
+    }
+}
+
+public class HashTable {
+    private final int SIZE = 10;
+    private LinkedList<Pair>[] table;
+
+    public HashTable() {
+        table = new LinkedList[SIZE];
+
+        for (int i = 0; i < SIZE; i++) {
+            table[i] = new LinkedList<>();
+        }
+    }
+
+    private int hashFunction(int key) {
+        return key % SIZE;
+    }
+
+    public void insert(int key, int value) {
+        int index = hashFunction(key);
+
+        for (Pair p : table[index]) {
+            if (p.key == key) {
+                p.value = value;
+                return;
+            }
+        }
+
+        table[index].add(new Pair(key, value));
+    }
+
+    public int search(int key) {
+        int index = hashFunction(key);
+
+        for (Pair p : table[index]) {
+            if (p.key == key)
+                return p.value;
+        }
+
+        return -1;
+    }
+
+    public void remove(int key) {
+        int index = hashFunction(key);
+
+        table[index].removeIf(p -> p.key == key);
+    }
+}
