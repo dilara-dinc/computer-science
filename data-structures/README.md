@@ -2,7 +2,7 @@
 
 This section contains implementations of fundamental data structures.
 
-The goal is to understand how each data structure works internally, rather than relying only on standard library implementations.
+The focus is on understanding how each data structure works internally by implementing it from scratch.
 
 ## Contents
 
@@ -15,3 +15,4 @@ The goal is to understand how each data structure works internally, rather than 
 - Heap
 - Graph
 - Trie
+- Union-Find
